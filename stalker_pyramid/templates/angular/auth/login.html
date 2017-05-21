@@ -1,0 +1,27 @@
+﻿<form class="login-container animated fadeInDown"
+      name="loginForm"
+      ng-submit="loginCtrl.login()"
+      novalidate>
+    <div class="loginbox bg-white">
+        <div class="loginbox-textbox">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Email"
+                   ng-model="loginCtrl.user_id"
+                   required/>
+        </div>
+        <div class="loginbox-textbox">
+            <input type="password"
+                   class="form-control"
+                   placeholder="Password"
+                   ng-model="loginCtrl.password"
+                   required/>
+        </div>
+        <div class="loginbox-submit">
+            <input type="submit" class="btn btn-primary btn-block" value="Login">
+        </div>
+    </div>
+    <div class="logobox">
+        {{loginCtrl.errorMessage}}
+    </div>
+</form>
