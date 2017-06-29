@@ -158,7 +158,7 @@ def main(global_config, **settings):
     )
 
     # before anything about stalker create the defaults
-    from stalker.config import defaults
+    from stalker import defaults
     logger.debug(
         os.path.normpath(
             defaults.server_side_storage_path + '/{partial_file_path}'
