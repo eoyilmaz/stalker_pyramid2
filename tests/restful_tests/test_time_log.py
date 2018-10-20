@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import time_log
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import time_log
 
 
 class TimeLogViewsUnitTestCase(UnitTestBase):
@@ -228,12 +228,12 @@ class TimeLogViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(t1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = t1.id
         time_log_view = time_log.TimeLogViews(request)
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         response = time_log_view.get_entity()
         self.maxDiff = None
@@ -316,7 +316,7 @@ class TimeLogViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(t2)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         time_log_view = time_log.TimeLogViews(request)
 
@@ -358,12 +358,12 @@ class TimeLogViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(t1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = t1.id
         request.params = DummyMultiDict()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         request.params['end'] = \
             EntityViewBase.milliseconds_since_epoch(new_end)
 
@@ -378,12 +378,12 @@ class TimeLogViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
 
         import datetime
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         start = datetime.datetime(2016, 7, 27, 19)
         end = datetime.datetime(2016, 7, 27, 20)
@@ -479,7 +479,7 @@ class TimeLogViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(t1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = t1.id
         time_log_view = time_log.TimeLogViews(request)
@@ -706,7 +706,7 @@ class TimeLogViewsFunctionalTestCase(FunctionalTestBase):
             status=200
         )
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(
@@ -830,7 +830,7 @@ class TimeLogViewsFunctionalTestCase(FunctionalTestBase):
         db.DBSession.add(t1)
         db.DBSession.commit()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.admin_login()
         response = self.test_app.patch(
@@ -868,7 +868,7 @@ class TimeLogViewsFunctionalTestCase(FunctionalTestBase):
         db.DBSession.add(t1)
         db.DBSession.commit()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.admin_login()
         response = self.test_app.post(
@@ -885,12 +885,12 @@ class TimeLogViewsFunctionalTestCase(FunctionalTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if PUT: /api/time_logs view is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
 
         import datetime
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         start = datetime.datetime(2016, 7, 27, 19)
         end = datetime.datetime(2016, 7, 27, 20)

@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import group
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import group
 
 
 class GroupViewsUnitTestCase(UnitTestBase):
@@ -107,7 +107,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing if get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
 
@@ -115,7 +115,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
         response = group_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.maxDiff = None
         self.assertEqual(
@@ -178,7 +178,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         group_view = group.GroupViews(request)
         response = group_view.get_entities()
@@ -199,7 +199,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
     def test_update_entity_is_working_properly(self):
         """testing if update_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
         request.params = DummyMultiDict()
@@ -234,7 +234,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'New Group'
@@ -251,7 +251,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
         # get the new group from db
         import stalker
         from stalker import Group
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         new_group = Group.query.filter(Group.name == 'New Group').first()
 
         self.maxDiff = None
@@ -309,7 +309,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_is_working_properly(self):
         """testing if delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
         group_view = group.GroupViews(request)
@@ -323,7 +323,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
     def test_get_users_is_working_properly(self):
         """testing if get_users() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
         group_view = group.GroupViews(request)
@@ -345,7 +345,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
         """testing if update_users() method is working properly with request
         method is patch
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
         request.params = DummyMultiDict()
@@ -367,7 +367,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
         """testing if update_users() method is working properly with request
         method is post
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
         request.params = DummyMultiDict()
@@ -388,7 +388,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
     def test_remove_users_is_working_properly(self):
         """testing if remove_users() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
         request.params = DummyMultiDict()
@@ -409,7 +409,7 @@ class GroupViewsUnitTestCase(UnitTestBase):
         """testing if remove_users() method is working properly with non
         related user instances
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_group1.id
         request.params = DummyMultiDict()
@@ -520,7 +520,7 @@ class GroupViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.maxDiff = None
         self.assertEqual(
@@ -687,7 +687,7 @@ class GroupViewsFunctionalTestCase(FunctionalTestBase):
         # get the new group from db
         import stalker
         from stalker import Group
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         new_group = Group.query.filter(Group.name == 'New Group').first()
 
         self.maxDiff = None

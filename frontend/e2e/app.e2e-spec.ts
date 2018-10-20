@@ -1,6 +1,6 @@
 import { StalkerPyramidPage } from './app.po';
 
-describe('stalker_pyramid App', () => {
+describe('stalker_pyramid2 App', () => {
   let page: StalkerPyramidPage;
 
   beforeEach(() => {

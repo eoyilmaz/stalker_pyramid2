@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import repository
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import repository
 
 
 class RepositoryViewsUnitTestCase(UnitTestBase):
@@ -63,7 +63,7 @@ class RepositoryViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing if get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_repo1.id
         repo_view = repository.RepositoryViews(request)
@@ -71,7 +71,7 @@ class RepositoryViewsUnitTestCase(UnitTestBase):
         response = repo_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -126,7 +126,7 @@ class RepositoryViewsUnitTestCase(UnitTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         repo_view = repository.RepositoryViews(request)
 
@@ -148,7 +148,7 @@ class RepositoryViewsUnitTestCase(UnitTestBase):
     def test_update_entity_is_working_properly(self):
         """testing if update_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
 
         request = DummyRequest()
         request.matchdict['id'] = self.test_repo1.id
@@ -177,7 +177,7 @@ class RepositoryViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'New Repository'
@@ -198,7 +198,7 @@ class RepositoryViewsUnitTestCase(UnitTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -253,7 +253,7 @@ class RepositoryViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_is_working_properly(self):
         """testing if delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_repo1.id
 
@@ -318,7 +318,7 @@ class RepositoryViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -373,7 +373,7 @@ class RepositoryViewsFunctionalTestCase(FunctionalTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if GET: /api/repositories view is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         repo_view = repository.RepositoryViews(request)
 
@@ -468,7 +468,7 @@ class RepositoryViewsFunctionalTestCase(FunctionalTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,

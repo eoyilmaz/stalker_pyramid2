@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import tag
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import tag
 
 
 class TagViewsUnitTestCase(UnitTestBase):
@@ -35,14 +35,14 @@ class TagViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(tag1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = tag1.id
 
         tag_view = tag.TagViews(request)
         response = tag_view.get_entity()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
 
         self.assertEqual(
@@ -81,7 +81,7 @@ class TagViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([test_tag1, test_tag2, test_tag3])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         tag_view = tag.TagViews(request)
@@ -102,7 +102,7 @@ class TagViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if the create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
 
@@ -115,7 +115,7 @@ class TagViewsUnitTestCase(UnitTestBase):
         tag_view = tag.TagViews(request)
         response = tag_view.create_entity()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         from stalker import Tag
         new_tag = Tag.query.filter(Tag.name == 'Test Tag 1').first()
 
@@ -167,7 +167,7 @@ class TagViewsUnitTestCase(UnitTestBase):
         db.DBSession.flush()
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = new_tag.id
         self.patch_logged_in_user(request)
@@ -193,7 +193,7 @@ class TagViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(new_tag)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = new_tag.id
         self.patch_logged_in_user(request)
@@ -221,7 +221,7 @@ class TagViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([test_tag1, test_tag2, test_tag3])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_tag1.id
 
@@ -252,7 +252,7 @@ class TagViewFunctionalTestCase(FunctionalTestBase):
             status=200
         )
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
 
         self.assertEqual(
@@ -320,7 +320,7 @@ class TagViewFunctionalTestCase(FunctionalTestBase):
             status=201
         )
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         from stalker import Tag
         new_tag = Tag.query.filter(Tag.name == 'Test Tag 1').first()
 

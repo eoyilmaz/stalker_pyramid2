@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import task
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import task
 
 
 class TaskViewUnitTestCase(UnitTestBase):
@@ -124,7 +124,7 @@ class TaskViewUnitTestCase(UnitTestBase):
     def test_get_entity_method_is_working_properly(self):
         """testing if the get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_task2.id
         task_view = task.TaskViews(request)

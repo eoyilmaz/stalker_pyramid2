@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import vacation
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import vacation
 
 
 class VacationViewsUnitTestCase(UnitTestBase):
@@ -56,14 +56,14 @@ class VacationViewsUnitTestCase(UnitTestBase):
         # get the id
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = vac1.id
 
         vacation_views = vacation.VacationViews(request)
         response = vacation_views.get_entity()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(
@@ -171,7 +171,7 @@ class VacationViewsUnitTestCase(UnitTestBase):
         vac3 = Vacation.query.filter(Vacation.name == vac3.name).first()
         vac4 = Vacation.query.filter(Vacation.name == vac4.name).first()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         vacation_views = vacation.VacationViews(request)
@@ -210,8 +210,8 @@ class VacationViewsUnitTestCase(UnitTestBase):
         end = datetime.datetime(2016, 4, 22, 16)
         user1 = User.query.filter(User.login == user1.login).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.views import EntityViewBase
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['user_id'] = user1.id
@@ -290,8 +290,8 @@ class VacationViewsUnitTestCase(UnitTestBase):
         start = datetime.datetime(2016, 4, 22, 10)
         end = datetime.datetime(2016, 4, 22, 16)
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.views import EntityViewBase
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['start'] = \
@@ -316,8 +316,8 @@ class VacationViewsUnitTestCase(UnitTestBase):
         start = datetime.datetime(2016, 4, 22, 10)
         end = datetime.datetime(2016, 4, 22, 16)
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.views import EntityViewBase
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['user_id'] = -1
@@ -353,8 +353,8 @@ class VacationViewsUnitTestCase(UnitTestBase):
         end = datetime.datetime(2016, 4, 22, 16)
         user1 = User.query.filter(User.login == user1.login).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.views import EntityViewBase
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['user_id'] = user1.id
@@ -389,8 +389,8 @@ class VacationViewsUnitTestCase(UnitTestBase):
         start = datetime.datetime(2016, 4, 22, 10)
         user1 = User.query.filter(User.login == user1.login).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.views import EntityViewBase
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['user_id'] = user1.id
@@ -444,7 +444,7 @@ class VacationViewsUnitTestCase(UnitTestBase):
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
         # also update updated_by_id attribute
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = vac1.id
 
@@ -492,14 +492,14 @@ class VacationViewsUnitTestCase(UnitTestBase):
         user1 = User.query.filter(User.login == user1.login).first()
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = vac1.id
 
         request.params = DummyMultiDict()
 
         # change start
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         request.params['start'] = \
             EntityViewBase.milliseconds_since_epoch(new_start)
 
@@ -540,14 +540,14 @@ class VacationViewsUnitTestCase(UnitTestBase):
         user1 = User.query.filter(User.login == user1.login).first()
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = vac1.id
 
         request.params = DummyMultiDict()
 
         # change start
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         request.params['end'] = \
             EntityViewBase.milliseconds_since_epoch(new_end)
 
@@ -585,7 +585,7 @@ class VacationViewsUnitTestCase(UnitTestBase):
 
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = vac1.id
 
@@ -629,7 +629,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         db.DBSession.commit()
 
         response = self.test_app.get('/api/vacations/%s' % vac.id)
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         import stalker
         self.assertEqual(
@@ -692,7 +692,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         end = datetime.datetime(2016, 4, 22, 16)
         user1 = User.query.filter(User.login == user1.login).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.admin_login()
         response = self.test_app.put(
@@ -771,7 +771,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         start = datetime.datetime(2016, 4, 22, 10)
         end = datetime.datetime(2016, 4, 22, 16)
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         response = self.test_app.put(
             '/api/vacations',
             params={
@@ -793,7 +793,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         start = datetime.datetime(2016, 4, 22, 10)
         end = datetime.datetime(2016, 4, 22, 16)
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         response = self.test_app.put(
             '/api/vacations',
             params={
@@ -825,7 +825,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         end = datetime.datetime(2016, 4, 22, 16)
         user1 = User.query.filter(User.login == user1.login).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.admin_login()
         response = self.test_app.put(
             '/api/vacations',
@@ -858,7 +858,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         start = datetime.datetime(2016, 4, 22, 10)
         user1 = User.query.filter(User.login == user1.login).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.admin_login()
         response = self.test_app.put(
             '/api/vacations',
@@ -1001,7 +1001,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         user1 = User.query.filter(User.login == user1.login).first()
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.admin_login()
         self.test_app.patch(
             '/api/vacations/%s' % vac1.id,
@@ -1043,7 +1043,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         user1 = User.query.filter(User.login == user1.login).first()
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.admin_login()
         self.test_app.post(
             '/api/vacations/%s' % vac1.id,
@@ -1084,7 +1084,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         user1 = User.query.filter(User.login == user1.login).first()
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.admin_login()
         self.test_app.patch(
             '/api/vacations/%s' % vac1.id,
@@ -1125,7 +1125,7 @@ class VacationViewFunctionalTestCase(FunctionalTestBase):
         user1 = User.query.filter(User.login == user1.login).first()
         vac1 = Vacation.query.filter(Vacation.name == vac1.name).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.admin_login()
         self.test_app.patch(
             '/api/vacations/%s' % vac1.id,

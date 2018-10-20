@@ -1,7 +1,7 @@
 import os
 
 from setuptools import setup, find_packages
-import stalker_pyramid
+import stalker_pyramid2
 
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README')).read()
@@ -27,8 +27,8 @@ test_requires = [
     'webtest',
 ]
 
-setup(name='stalker_pyramid',
-      version=stalker_pyramid.__version__,
+setup(name='stalker_pyramid2',
+      version=stalker_pyramid2.__version__,
       description='Stalker Based Web App',
       long_description='%s\n\n%s' % (README, CHANGES),
       classifiers=[
@@ -48,7 +48,7 @@ setup(name='stalker_pyramid',
       ],
       author='Erkan Ozgur Yilmaz',
       author_email='eoyilmaz@gmail.com',
-      url='https://www.github.com/eoyilmaz/stalker_pyramid/',
+      url='https://www.github.com/eoyilmaz/stalker_pyramid2/',
       keywords=['web', 'wsgi', 'bfg', 'pylons', 'pyramid', 'production',
                 'asset', 'management', 'vfx', 'animation', 'houdini', 'nuke',
                 'fusion', 'xsi', 'blender', 'vue', 'stalker'],
@@ -56,13 +56,13 @@ setup(name='stalker_pyramid',
       include_package_data=True,
       zip_safe=False,
       tests_require=test_requires,
-      test_suite='stalker_pyramid',
+      test_suite='stalker_pyramid2',
       install_requires=requires,
       entry_points="""\
       [paste.app_factory]
-      main = stalker_pyramid:main
+      main = stalker_pyramid2:main
       [console_scripts]
-      initialize_stalker_pyramid_db = stalker_pyramid.scripts.initializedb:main
+      initialize_stalker_pyramid_db = stalker_pyramid2.scripts.initializedb:main
       """,
-)
+      )
 

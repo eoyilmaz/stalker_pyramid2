@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import status
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import status
 
 
 class StatusViewsUnitTestCase(UnitTestBase):
@@ -37,7 +37,7 @@ class StatusViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_status1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_status1.id
 
@@ -45,7 +45,7 @@ class StatusViewsUnitTestCase(UnitTestBase):
         response = status_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -105,7 +105,7 @@ class StatusViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([test_status1, test_status2, test_status3])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         status_view = status.StatusViews(request)
@@ -133,7 +133,7 @@ class StatusViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_status1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.matchdict['id'] = test_status1.id
@@ -158,7 +158,7 @@ class StatusViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
 
@@ -179,7 +179,7 @@ class StatusViewsUnitTestCase(UnitTestBase):
         new_status = Status.query.filter(Status.code == code).first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -239,7 +239,7 @@ class StatusViewsUnitTestCase(UnitTestBase):
 
         self.assertIsNotNone(Status.query.filter(Status.code == 'TST').first())
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_status.id
 
@@ -271,7 +271,7 @@ class StatusViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -428,7 +428,7 @@ class StatusViewsFunctionalTestCase(FunctionalTestBase):
         from stalker import Status
         new_status = Status.query.filter(Status.code == code).first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(

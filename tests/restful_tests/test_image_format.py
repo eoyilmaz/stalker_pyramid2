@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import format
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import format
 
 
 class ImageFormatViewsUnitTestCase(UnitTestBase):
@@ -41,7 +41,7 @@ class ImageFormatViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_image_format)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_image_format.id
 
@@ -49,7 +49,7 @@ class ImageFormatViewsUnitTestCase(UnitTestBase):
         response = image_format_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -122,7 +122,7 @@ class ImageFormatViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(im2)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         image_format_view = format.ImageFormatViews(request)
@@ -144,7 +144,7 @@ class ImageFormatViewsUnitTestCase(UnitTestBase):
     def test_create_entity_method_is_working_properly(self):
         """testing if the create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
 
         request = DummyRequest()
         request.params = DummyMultiDict()
@@ -164,7 +164,7 @@ class ImageFormatViewsUnitTestCase(UnitTestBase):
                 .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -233,7 +233,7 @@ class ImageFormatViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_image_format)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_image_format.id
 
@@ -267,7 +267,7 @@ class ImageFormatViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_image_format)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_image_format.id
 
@@ -308,7 +308,7 @@ class TypeViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -421,7 +421,7 @@ class TypeViewsFunctionalTestCase(FunctionalTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,

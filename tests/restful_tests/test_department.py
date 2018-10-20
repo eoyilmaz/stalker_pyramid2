@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import department
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import department
 
 
 class DepartmentViewsUnitTestCase(UnitTestBase):
@@ -84,7 +84,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing if the get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
 
@@ -92,7 +92,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         response = department_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -153,7 +153,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if the get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         department_view = department.DepartmentViews(request)
         response = department_view.get_entities()
@@ -173,7 +173,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
     def test_update_entity_is_working_properly(self):
         """testing if the update_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         request.params = DummyMultiDict()
@@ -203,7 +203,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if the create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'New Department'
@@ -222,7 +222,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
             .filter(Department.name == 'New Department')\
             .first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
 
         self.maxDiff = None
@@ -284,7 +284,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_is_working_properly(self):
         """testing if the delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
 
@@ -304,7 +304,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         from stalker import db
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         department_view = department.DepartmentViews(request)
@@ -330,7 +330,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         self.test_department1.users = [self.test_user1]
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
 
@@ -359,7 +359,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         self.test_department1.users = [self.test_user1]
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
 
@@ -389,7 +389,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
             [self.test_user1, self.test_user2, self.test_user3]
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
 
@@ -419,7 +419,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
             [self.test_user1, self.test_user2]
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
 
@@ -447,7 +447,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         from stalker import db
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         department_view = department.DepartmentViews(request)
@@ -501,7 +501,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # now update the user role to something new
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         request.method = 'PATCH'
@@ -550,7 +550,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # now update the user role to something new
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         request.method = 'POST'
@@ -600,7 +600,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # now update the user role to something new
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         request.method = 'POST'
@@ -650,7 +650,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # now update the user role to something new
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         request.method = 'POST'
@@ -697,7 +697,7 @@ class DepartmentViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # now update the user role to something new
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_department1.id
         request.method = 'POST'
@@ -792,7 +792,7 @@ class DepartmentViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -945,7 +945,7 @@ class DepartmentViewsFunctionalTestCase(FunctionalTestBase):
             .filter(Department.name == 'New Department')\
             .first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
 
         self.maxDiff = None

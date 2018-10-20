@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import structure
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import structure
 
 
 class StructureViewsUnitTestCase(UnitTestBase):
@@ -93,7 +93,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing if get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
         structure_view = structure.StructureViews(request)
@@ -101,7 +101,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
         response = structure_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -157,7 +157,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         structure_view = structure.StructureViews(request)
 
@@ -179,7 +179,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_update_entity_is_working_properly(self):
         """testing if update_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
 
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
@@ -218,7 +218,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'New Structure'
@@ -240,7 +240,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -297,7 +297,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_is_working_properly(self):
         """testing if delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
 
@@ -316,7 +316,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_get_templates_is_working_properly(self):
         """testing if get_templates() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
 
@@ -340,7 +340,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_update_templates_is_working_properly_with_patch(self):
         """testing if update_templates() method is working properly with patch
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
 
@@ -366,7 +366,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_update_templates_is_working_properly_with_post(self):
         """testing if update_templates() method is working properly with post
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
 
@@ -389,7 +389,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
     def test_remove_templates_is_working_properly(self):
         """testing if remove_templates() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
 
@@ -412,7 +412,7 @@ class StructureViewsUnitTestCase(UnitTestBase):
         """testing if remove_templates() method is working properly with non
         related filename templates
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_structure1.id
 
@@ -509,7 +509,7 @@ class StructureViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -565,7 +565,7 @@ class StructureViewsFunctionalTestCase(FunctionalTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if GET: /api/structures view is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         structure_view = structure.StructureViews(request)
 
@@ -648,7 +648,7 @@ class StructureViewsFunctionalTestCase(FunctionalTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,

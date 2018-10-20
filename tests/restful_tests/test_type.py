@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import type
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import type
 
 
 class TypeViewsUnitTestCase(UnitTestBase):
@@ -39,7 +39,7 @@ class TypeViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_type)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_type.id
 
@@ -47,7 +47,7 @@ class TypeViewsUnitTestCase(UnitTestBase):
         response = type_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -100,7 +100,7 @@ class TypeViewsUnitTestCase(UnitTestBase):
     def test_get_entities_method_is_working_properly(self):
         """testing if the get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         type_view = type.TypeViews(request)
@@ -123,7 +123,7 @@ class TypeViewsUnitTestCase(UnitTestBase):
     def test_create_entity_method_is_working_properly(self):
         """testing if the create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
 
         request = DummyRequest()
         request.params = DummyMultiDict()
@@ -140,7 +140,7 @@ class TypeViewsUnitTestCase(UnitTestBase):
         test_type = Type.query.filter(Type.name == 'Test Type').first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -204,7 +204,7 @@ class TypeViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_type)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_type.id
         request.params = DummyMultiDict()
@@ -235,7 +235,7 @@ class TypeViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_type)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_type.id
 
@@ -272,7 +272,7 @@ class TypeViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -363,7 +363,7 @@ class TypeViewsFunctionalTestCase(FunctionalTestBase):
         test_type = Type.query.filter(Type.name == 'Test Type').first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,

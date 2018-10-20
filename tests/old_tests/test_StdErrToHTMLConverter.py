@@ -20,11 +20,11 @@
 
 
 import unittest
-from stalker_pyramid.views import StdErrToHTMLConverter
+from stalker_pyramid2.views import StdErrToHTMLConverter
 
 
 class StdErrToHTMLConverterTestCase(unittest.TestCase):
-    """tests the stalker_pyramid.views.StdErrToHTMLConverter class
+    """tests the stalker_pyramid2.views.StdErrToHTMLConverter class
     """
 
     def test_list_input(self):

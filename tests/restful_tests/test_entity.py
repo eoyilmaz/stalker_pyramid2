@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import entity
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import entity
 
 
 class EntityViewsUnitTestCase(UnitTestBase):
@@ -56,14 +56,14 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_entity)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_entity.id
 
         entity_view = entity.EntityViews(request)
         response = entity_view.get_entity()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
 
         expected = {
@@ -182,7 +182,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         # commit data
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         entity_view = entity.EntityViews(request)
@@ -271,7 +271,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         ]
 
         self.maxDiff = None
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
         expected_response = [
             {
                 'id': r.id,
@@ -314,7 +314,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_entity)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.method = 'PATCH'
         request.matchdict['id'] = test_entity.id
@@ -371,7 +371,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_entity)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.method = 'POST'
         request.matchdict['id'] = test_entity.id
@@ -436,7 +436,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_entity)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         dummy_request = DummyRequest()
         dummy_request.matchdict['id'] = test_entity.id
         entity_view = entity.EntityViews(dummy_request)
@@ -473,7 +473,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([t1, t2, t3, test_entity])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_entity.id
 
@@ -515,7 +515,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_entity)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_entity.id
 
@@ -553,7 +553,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([t1, t2, t3, test_entity])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_entity.id
 
@@ -589,7 +589,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([t1, t2, t3, test_entity])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.method = 'DELETE'
         request.matchdict['id'] = test_entity.id
@@ -625,7 +625,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([t1, t2, t3, test_entity])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.method = 'DELETE'
         request.matchdict['id'] = test_entity.id
@@ -671,7 +671,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         test_entity.notes = [test_note1, test_note2, test_note3]
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_entity.id
         request.method = 'GET'
@@ -734,7 +734,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         test_entity.notes = [test_note1, test_note2, test_note3]
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_entity.id
         request.method = 'PATCH'
@@ -786,7 +786,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
         test_entity.notes = [test_note1, test_note2, test_note3]
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_entity.id
         request.method = 'POST'
@@ -820,7 +820,7 @@ class EntityViewsUnitTestCase(UnitTestBase):
 
         self.assertIsNotNone(test_entity_db)
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_entity_db.id
 
@@ -873,7 +873,7 @@ class EntityViewFunctionalTests(FunctionalTestBase):
             status=200
         )
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
 
         self.maxDiff = None
@@ -1075,7 +1075,7 @@ class EntityViewFunctionalTests(FunctionalTestBase):
         ]
 
         self.maxDiff = None
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
         expected_response = [
             {
                 'id': r.id,

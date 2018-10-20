@@ -26,14 +26,14 @@ import tempfile
 
 from stalker import db, defaults, Link, Repository, Structure, FilenameTemplate, \
     Status, StatusList, Type, User, Project, Task, Version
-from stalker_pyramid.views.link import MediaManager
+from stalker_pyramid2.views.link import MediaManager
 
 
 here = os.path.abspath(os.path.dirname(__file__))
 
 
 class MediaManagerTestCase(unittest.TestCase):
-    """tests the stalker_pyramid.views.link.MediaManager class
+    """tests the stalker_pyramid2.views.link.MediaManager class
     """
 
     def setUp(self):

@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import template
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import template
 
 
 class FilenameTemplateViewsUnitTestCase(UnitTestBase):
@@ -74,14 +74,14 @@ class FilenameTemplateViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing if get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_filename_template1.id
         filename_template_view = template.FilenameTemplateViews(request)
         response = filename_template_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -140,7 +140,7 @@ class FilenameTemplateViewsUnitTestCase(UnitTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         filename_template_view = template.FilenameTemplateViews(request)
         response = filename_template_view.get_entities()
@@ -162,7 +162,7 @@ class FilenameTemplateViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'New Filename Template'
@@ -181,7 +181,7 @@ class FilenameTemplateViewsUnitTestCase(UnitTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -240,7 +240,7 @@ class FilenameTemplateViewsUnitTestCase(UnitTestBase):
         description = 'This is a new filename template'
         path = 'some_other_template_text'
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_filename_template1.id
 
@@ -270,7 +270,7 @@ class FilenameTemplateViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_is_working_properly(self):
         """testing if delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_filename_template1.id
 
@@ -344,7 +344,7 @@ class FilenameTemplateViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -445,7 +445,7 @@ class FilenameTemplateViewsFunctionalTestCase(FunctionalTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,

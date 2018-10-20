@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import link
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import link
 
 
 class LinkViewsUnitTestCase(UnitTestBase):
@@ -60,7 +60,7 @@ class LinkViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing if get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_link1.id
         link_view = link.LinkViews(request)
@@ -68,7 +68,7 @@ class LinkViewsUnitTestCase(UnitTestBase):
         response = link_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -122,7 +122,7 @@ class LinkViewsUnitTestCase(UnitTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         link_view = link.LinkViews(request)
 
@@ -144,7 +144,7 @@ class LinkViewsUnitTestCase(UnitTestBase):
     def test_update_entity_is_working_properly(self):
         """testing if update_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
 
         request = DummyRequest()
         request.matchdict['id'] = self.test_link1.id
@@ -171,7 +171,7 @@ class LinkViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'New Link'
@@ -191,7 +191,7 @@ class LinkViewsUnitTestCase(UnitTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -245,7 +245,7 @@ class LinkViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_is_working_properly(self):
         """testing if delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_link1.id
 
@@ -307,7 +307,7 @@ class LinkViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -361,7 +361,7 @@ class LinkViewsFunctionalTestCase(FunctionalTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if GET: /api/links view is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         link_view = link.LinkViews(request)
 
@@ -451,7 +451,7 @@ class LinkViewsFunctionalTestCase(FunctionalTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,

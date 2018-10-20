@@ -1,7 +1,7 @@
 {
-  "compileOnSave": false,
+  "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
+    "outDir": "../stalker_pyramid2/static/angular/",
     "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,

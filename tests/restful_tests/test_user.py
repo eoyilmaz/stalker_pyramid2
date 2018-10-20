@@ -16,8 +16,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
-from stalker_pyramid.views import user
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import user
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
 
 
 # TODO: User testing_securitypolicy() to isolate the authentication process.
@@ -154,7 +154,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -247,7 +247,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_get_entities_is_working_properly(self):
         """testing if UserViews.get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         user_view = user.UserViews(request)
         response = user_view.get_entities()
@@ -288,7 +288,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if create_entity() is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
 
@@ -307,7 +307,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         import stalker
         from stalker import User
         created_user = User.query.filter(User.login == 'testuser4').first()
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         expected_result = {
             'created_by': {
@@ -400,7 +400,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing create_entity() method with non available login
         """
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
 
@@ -428,7 +428,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing create_entity() method with non available login
         """
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
 
@@ -456,7 +456,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if UserViews.update_entity() method is working properly
         with only updating the ``name`` parameter
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -479,7 +479,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if UserViews.update_entity() method is working properly for
         updating login parameter
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -503,7 +503,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if update_user view is working properly for updating login
         with an already present one
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -532,7 +532,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if UserViews.update_entity() method is working properly for
         updating email
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -557,7 +557,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if UserViews.update_entity() method is working properly for
         updating email with a malformed email address
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -591,7 +591,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if UserViews.update_entity() method is working properly for
         updating password
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -617,7 +617,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if UserViews.update_entity() view is working properly for
         updating multiple parameters at once
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -654,7 +654,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_delete_enity_is_working_properly(self):
         """testing if UserViews.delete_entity() view is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         deleted_user_id = self.test_user1.id
@@ -678,7 +678,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_get_departments(self):
         """testing getting user departments
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         request.matchdict['id'] = self.test_user1.id
@@ -706,7 +706,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_get_departments_with_a_user_with_no_departments(self):
         """testing getting user departments for a user with no department
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         # patch get_logged_in_user
@@ -740,7 +740,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_update_departments_with_request_method_is_post(self):
         """testing update_departments() method with request method is POST
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -758,7 +758,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         self.patch_logged_in_user(request)
 
         # and assign it to the new user (with RESTFull API)
-        from stalker_pyramid.testing import DummyMultiDict
+        from stalker_pyramid2.testing import DummyMultiDict
         request.method = 'POST'
         request.params = DummyMultiDict()
         request.params['dep_id[]'] = [self.test_dep1.id, new_dep.id]
@@ -780,7 +780,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_remove_departments(self):
         """testing removing a department from the user
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -807,7 +807,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing remove_departments() will work silently when the given
         department is not in user.departments
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -835,7 +835,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_get_groups(self):
         """testing getting user groups
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user3.id
 
@@ -870,7 +870,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_update_groups(self):
         """testing update_groups() is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         request.matchdict['id'] = self.test_user1.id
@@ -889,7 +889,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         self.patch_logged_in_user(request)
 
         # and assign it to the new user (with RESTFull API)
-        from stalker_pyramid.testing import DummyMultiDict
+        from stalker_pyramid2.testing import DummyMultiDict
         request.method = 'POST'
         request.params = DummyMultiDict()
         request.params['group_id[]'] = [self.test_group1.id, new_group.id]
@@ -910,7 +910,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_remove_groups(self):
         """testing if remove_groups() is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -936,7 +936,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if remove_groups() will silently remove the group when
         the given group is not related to the user
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -963,7 +963,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_get_projects(self):
         """testing getting user projects
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user3.id
 
@@ -1008,7 +1008,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(new_project)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -1037,7 +1037,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_remove_projects(self):
         """testing if remove_projects() is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user3.id
 
@@ -1063,7 +1063,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         """testing if remove_projects() will silently remove the projects
         even when the given user is not in the given project
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -1091,7 +1091,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_get_vacations(self):
         """testing if get_vacations() is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -1257,7 +1257,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         # commit data
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -1369,7 +1369,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         # commit data
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.method = 'GET'
@@ -1483,7 +1483,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         # commit data
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.method = 'GET'
@@ -1633,7 +1633,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         # commit data
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.method = 'GET'
@@ -1783,7 +1783,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         # commit data
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.method = 'DELETE'
@@ -1936,7 +1936,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         # commit data
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.method = 'DELETE'
@@ -2092,7 +2092,7 @@ class UserViewsUnitTestCase(UnitTestBase):
 
         t = Task.query.filter(Task.name == t1.name).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.method = 'DELETE'
@@ -2245,7 +2245,7 @@ class UserViewsUnitTestCase(UnitTestBase):
 
         t = Task.query.filter(Task.name == t4.name).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -2398,7 +2398,7 @@ class UserViewsUnitTestCase(UnitTestBase):
 
         t = Task.query.filter(Task.name == t13.name).first()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params = DummyMultiDict()
@@ -2469,7 +2469,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # get user reviews
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -2543,7 +2543,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # get user reviews
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
         request.params['status'] = 'NEW'
@@ -2622,7 +2622,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         t6.resolve(created_by=self.test_user1, resolution=FIXED)
         db.DBSession.add(t6)
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -2698,7 +2698,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         t6.resolve(created_by=self.test_user1, resolution=FIXED)
         db.DBSession.add(t6)
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -2724,7 +2724,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_check_availability_for_available_login(self):
         """testing check_availability() method for login parameter
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.params['login'] = 'new_login'
         user_view = user.UserViews(request)
@@ -2734,7 +2734,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_check_availability_for_non_available_login(self):
         """testing check_availability() method for login parameter
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.params['login'] = self.test_user1.login
         user_view = user.UserViews(request)
@@ -2744,7 +2744,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_check_availability_for_available_email(self):
         """testing check_availability() method for email parameter
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.params['email'] = 'available@users.com'
         user_view = user.UserViews(request)
@@ -2754,7 +2754,7 @@ class UserViewsUnitTestCase(UnitTestBase):
     def test_check_availability_for_non_available_email(self):
         """testing check_availability() method for email parameter
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.params['email'] = self.test_user1.email
         user_view = user.UserViews(request)
@@ -2814,7 +2814,7 @@ class UserViewsUnitTestCase(UnitTestBase):
         db.DBSession.commit()
 
         # now get the time logs
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_user1.id
 
@@ -2977,7 +2977,7 @@ class UserViewFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.maxDiff = None
         self.assertEqual(
             response.json_body,
@@ -3074,7 +3074,7 @@ class UserViewFunctionalTestCase(FunctionalTestBase):
         import stalker
         from stalker import User
         admin = User.query.filter(User.login == 'admin').first()
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         res = self.test_app.get(
             '/api/users/3',
@@ -3214,7 +3214,7 @@ class UserViewFunctionalTestCase(FunctionalTestBase):
         new_user = User.query.filter(User.login == 'newuser1').first()
         admin = User.query.filter(User.login == 'admin').first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.maxDiff = None
         self.assertEqual(

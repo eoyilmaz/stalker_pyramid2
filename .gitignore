@@ -4,7 +4,7 @@
 .DS_Store
 dist/*
 build/*
-stalker_pyramid/static/node_modules
+stalker_pyramid2/static/node_modules
 stalker_pyramid.egg-info/*
 upload_to_pypi
 lib/*

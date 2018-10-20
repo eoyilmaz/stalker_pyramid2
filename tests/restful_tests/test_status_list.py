@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import status
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import status
 
 
 class StatusListViewsUnitTestCase(UnitTestBase):
@@ -48,14 +48,14 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
         status_list_view = status.StatusListViews(request)
 
         response = status_list_view.get_entity()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(
@@ -136,7 +136,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         # get the default status lists
         s_lists = StatusList.query.all()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         status_list_view = status.StatusListViews(request)
         response = status_list_view.get_entities()
@@ -175,7 +175,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['target_entity_type'] = 'Project'
@@ -217,7 +217,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
         self.patch_logged_in_user(request)
@@ -259,7 +259,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
 
@@ -289,7 +289,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'Project Status List'
@@ -307,7 +307,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
             .filter(StatusList.name == 'Project Status List')\
             .first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(
@@ -385,7 +385,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
 
@@ -429,7 +429,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
         self.patch_logged_in_user(request)
@@ -473,7 +473,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
         self.patch_logged_in_user(request)
@@ -513,7 +513,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
 
@@ -552,7 +552,7 @@ class StatusListViewsUnitTestCase(UnitTestBase):
         ])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = test_status_list.id
 
@@ -601,7 +601,7 @@ class StatusListViewsFunctionalTestCase(FunctionalTestBase):
             status=200
         )
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(
@@ -918,7 +918,7 @@ class StatusListViewsFunctionalTestCase(FunctionalTestBase):
             .filter(StatusList.name == 'Project Status List')\
             .first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(

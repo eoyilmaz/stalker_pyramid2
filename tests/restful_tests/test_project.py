@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import project
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import project
 
 
 class ProjectViewsUnitTestCase(UnitTestBase):
@@ -349,7 +349,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         response = project_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'clients': {
                 '$ref': '/api/projects/%s/clients' % self.test_project1.id,
@@ -465,12 +465,12 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_entities_method_is_working_properly(self):
         """testing if the get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
 
         params = DummyMultiDict()
 
-        from stalker_pyramid.views.project import ProjectViews
+        from stalker_pyramid2.views.project import ProjectViews
         project_view = ProjectViews(request)
 
         response = project_view.get_entities()
@@ -493,7 +493,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the update_entity() method is working properly with the
         request method is set to PATCH
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.method = 'PATCH'
@@ -526,7 +526,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the update_entity() method is working properly with the
         request method is set to POST
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.method = 'POST'
@@ -559,8 +559,8 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the create_entity() method is working properly
         """
         import datetime
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.views import EntityViewBase
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['name'] = 'New Project 1'
@@ -701,7 +701,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_method_is_working_properly(self):
         """testing if the delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -716,7 +716,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_clients_method_is_working_properly(self):
         """testing if the get_clients() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -748,7 +748,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         )
 
         # now do it!
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.method = 'PATCH'
@@ -780,7 +780,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         )
 
         # now do it!
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.method = 'POST'
@@ -810,7 +810,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         )
 
         # now do it!
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -840,7 +840,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         )
 
         # now do it!
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -862,7 +862,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_repositories_method_is_working_properly(self):
         """testing if the get_repositories() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         project_view = project.ProjectViews(request)
@@ -884,7 +884,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the update_repositories() method is working properly with
         the request method is set to PATCH
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -906,7 +906,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the update_repositories() method is working properly with
         the request method is set to POST
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -927,7 +927,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_delete_repositories_method_is_working_properly(self):
         """testing if the delete_repositories() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -948,7 +948,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the delete_repositories() method is working properly with
         non related data
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -968,14 +968,14 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_tasks_method_is_working_properly(self):
         """testing if the get_tasks() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
         project_view = project.ProjectViews(request)
         response = project_view.get_tasks()
 
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
         expected_result = [
             {
                 'id': t.id,
@@ -989,7 +989,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_tickets_method_is_working_properly(self):
         """testing if the get_tickets() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         project_view = project.ProjectViews(request)
@@ -1013,7 +1013,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_users_method_is_working_properly(self):
         """testing if the get_users() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -1038,7 +1038,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the update_users() method is working properly with
         the request method is set to PATCH
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -1063,7 +1063,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
         """testing if the update_users() method is working properly with
         the request method is set to POST
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -1086,7 +1086,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_delete_users_method_is_working_properly(self):
         """testing if the delete_users() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -1108,7 +1108,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_delete_users_method_is_working_properly_with_non_related_data(self):
         """testing if the delete_users() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
         request.params = DummyMultiDict()
@@ -1130,7 +1130,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_dailies_method_is_working_properly(self):
         """testing if get_dailies() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -1154,7 +1154,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_references_method_is_working_properly(self):
         """testing if get_references() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -1180,7 +1180,7 @@ class ProjectViewsUnitTestCase(UnitTestBase):
     def test_get_budgets_method_is_working_properly(self):
         """testing if get_budgets() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_project1.id
 
@@ -1529,7 +1529,7 @@ class ProjectViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'clients': {
                 '$ref': '/api/projects/%s/clients' % self.test_project1.id,
@@ -1719,7 +1719,7 @@ class ProjectViewsFunctionalTestCase(FunctionalTestBase):
         """testing if the PUT:/api/projects view is working properly
         """
         import datetime
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         self.admin_login()
         response = self.test_app.put(
             '/api/projects',
@@ -2105,7 +2105,7 @@ class ProjectViewsFunctionalTestCase(FunctionalTestBase):
             status=200
         )
 
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
         expected_result = [
             {
                 'id': t.id,

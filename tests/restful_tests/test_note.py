@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import note
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import note
 
 
 class NoteViewsUnitTestCase(UnitTestBase):
@@ -36,7 +36,7 @@ class NoteViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_note1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_note1.id
 
@@ -44,7 +44,7 @@ class NoteViewsUnitTestCase(UnitTestBase):
         response = note_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.assertEqual(
             response.json_body,
@@ -97,7 +97,7 @@ class NoteViewsUnitTestCase(UnitTestBase):
         db.DBSession.add_all([note1, note2, note3, note4])
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
 
         note_views = note.NoteViews(request)
@@ -151,7 +151,7 @@ class NoteViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(note1)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = note1.id
         request.params = DummyMultiDict()
@@ -184,7 +184,7 @@ class NoteViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_user)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.params = DummyMultiDict()
         request.params['content'] = 'This is the test content'
@@ -196,7 +196,7 @@ class NoteViewsUnitTestCase(UnitTestBase):
         from stalker import Note
         test_note1 = Note.query.first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(
@@ -249,7 +249,7 @@ class NoteViewsUnitTestCase(UnitTestBase):
         db.DBSession.add(test_note)
         db.DBSession.commit()
 
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = test_note.id
 
@@ -281,7 +281,7 @@ class NoteViewsFunctionalTestCase(FunctionalTestBase):
         )
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         self.assertEqual(
             response.json_body,
@@ -453,7 +453,7 @@ class NoteViewsFunctionalTestCase(FunctionalTestBase):
         from stalker import Note
         test_note1 = Note.query.first()
 
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         import stalker
         self.maxDiff = None
         self.assertEqual(

@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Stalker Pyramid.  If not, see <http://www.gnu.org/licenses/>.
 
-from stalker_pyramid.testing import UnitTestBase, FunctionalTestBase
-from stalker_pyramid.views import ticket
+from stalker_pyramid2.testing import UnitTestBase, FunctionalTestBase
+from stalker_pyramid2.views import ticket
 
 
 class TicketViewsUnitTestCase(UnitTestBase):
@@ -212,7 +212,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_get_entity_is_working_properly(self):
         """testing if get_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
         ticket_view = ticket.TicketViews(request)
@@ -220,7 +220,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         response = ticket_view.get_entity()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         expected_result = {
             'created_by': {
@@ -321,7 +321,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_get_entities_method_is_working_properly(self):
         """testing if get_entities() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         ticket_view = ticket.TicketViews(request)
 
@@ -347,7 +347,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_update_entity_is_working_properly(self):
         """testing if update_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -376,7 +376,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_create_entity_is_working_properly(self):
         """testing if the create_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
 
         request.params = DummyMultiDict()
@@ -401,7 +401,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -497,7 +497,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_delete_entity_is_working_properly(self):
         """testing if the delete_entity() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -511,7 +511,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_resolve_action_method_is_working_properly(self):
         """testing if the resolve action method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -525,7 +525,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -625,7 +625,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_accept_action_method_is_working_properly(self):
         """testing if the accept action method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -638,7 +638,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -742,7 +742,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         self.test_ticket1.accept(created_by=self.test_user1)
 
         # and now reassign it
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -756,7 +756,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -860,7 +860,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         self.test_ticket1.resolve(self.admin, 'fixed')
 
         # now reopen
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -873,7 +873,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -973,7 +973,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_get_ticket_resolutions_method_is_working_properly(self):
         """testing if get_ticket_resolutions() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         ticket_view = ticket.TicketViews(request)
         response = ticket_view.get_ticket_resolutions()
@@ -988,7 +988,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_get_ticket_workflow_method_is_working_properly(self):
         """testing if get_ticket_workflow() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         ticket_view = ticket.TicketViews(request)
         response = ticket_view.get_ticket_workflow()
@@ -1061,14 +1061,14 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_get_links_method_is_working_properly(self):
         """testing if get_links() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
         self.patch_logged_in_user(request)
         ticket_view = ticket.TicketViews(request)
 
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
 
         response = ticket_view.get_links()
         self.assertEqual(
@@ -1086,7 +1086,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_update_links_method_is_working_properly_with_patch(self):
         """testing if update_links() method is working properly with patch
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1110,7 +1110,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_update_links_method_is_working_properly_with_post(self):
         """testing if update_links() method is working properly with post
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1132,7 +1132,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_delete_links_method_is_working_properly(self):
         """testing if delete_links()( method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1154,7 +1154,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         """testing if delete_links()( method is working properly with non
         related items
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1175,7 +1175,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_get_related_tickets_method_is_working_properly(self):
         """testing if get_related_tickets() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
         ticket_view = ticket.TicketViews(request)
@@ -1198,7 +1198,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         """testing if update_related_tickets() method is working properly with
         request.method is PATCH
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1221,7 +1221,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         """testing if update_related_tickets() method is working properly with
         request.method is POST
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1243,7 +1243,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_delete_related_tickets_method_is_working_properly(self):
         """testing if delete_related_tickets()( method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1265,7 +1265,7 @@ class TicketViewsUnitTestCase(UnitTestBase):
         """testing if delete_related_tickets()( method is working properly
         with non-related tickets
         """
-        from stalker_pyramid.testing import DummyRequest, DummyMultiDict
+        from stalker_pyramid2.testing import DummyRequest, DummyMultiDict
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1290,14 +1290,14 @@ class TicketViewsUnitTestCase(UnitTestBase):
     def test_get_logs_method_is_working_properly(self):
         """testing if get_logs() method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
         ticket_view = ticket.TicketViews(request)
         response = ticket_view.get_logs()
 
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
         self.assertEqual(
             response.json_body,
             [
@@ -1508,7 +1508,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
         response = self.test_app.get('/api/tickets/%s' % self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
 
         expected_result = {
             'created_by': {
@@ -1705,7 +1705,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
             .first()
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -1813,7 +1813,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
     def test_resolve_action_method_is_working_properly(self):
         """testing if the resolve action method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1827,7 +1827,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -1927,7 +1927,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
     def test_accept_action_method_is_working_properly(self):
         """testing if the accept action method is working properly
         """
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -1940,7 +1940,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -2044,7 +2044,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
         self.test_ticket1.accept(created_by=self.test_user1)
 
         # and now reassign it
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -2058,7 +2058,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -2162,7 +2162,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
         self.test_ticket1.resolve(self.admin, 'fixed')
 
         # now reopen
-        from stalker_pyramid.testing import DummyRequest
+        from stalker_pyramid2.testing import DummyRequest
         request = DummyRequest()
         request.matchdict['id'] = self.test_ticket1.id
 
@@ -2175,7 +2175,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
         test_ticket1_db = Ticket.query.get(self.test_ticket1.id)
 
         import stalker
-        from stalker_pyramid.views import EntityViewBase
+        from stalker_pyramid2.views import EntityViewBase
         expected_result = {
             'created_by': {
                 'name': 'admin',
@@ -2366,7 +2366,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
             '/api/tickets/%s/links' % self.test_ticket1.id,
             status=200
         )
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
         self.assertEqual(
             response.json_body,
             [
@@ -2563,7 +2563,7 @@ class TicketViewsFunctionalTestCase(FunctionalTestBase):
             status=200
         )
 
-        from stalker_pyramid import entity_type_to_url
+        from stalker_pyramid2 import entity_type_to_url
         self.assertEqual(
             response.json_body,
             [
